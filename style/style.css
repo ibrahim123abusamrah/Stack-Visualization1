@@ -1,0 +1,55 @@
+body {
+    padding: 0px;
+}
+
+.boxstack {
+    margin: 2%;
+    width: 15%;
+    height: 400px;
+    background-color: #7fffd4;
+    position: relative;
+}
+
+li {
+    width: 100%;
+    height: 36px;
+    background: #34E15D;
+    list-style-type: none;
+    margin: 5px;
+    text-align: center;
+}
+
+.insid {
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: -5px;
+}
+
+ul {
+    padding: 0px;
+}
+
+.toside {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.button {
+    border: none;
+    padding: 5px 3px;
+    font-size: 16px;
+    margin: 4px 2px;
+    justify-content: center;
+    text-align: center;
+    width: 70%;
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ed3330;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+}
