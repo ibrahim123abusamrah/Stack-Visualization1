@@ -11,20 +11,30 @@ function grratelment() {
     numberofstat++;
     stackallelement.push(numberofstat);
     let lielment = document.createElement("div");
+
     lielment.innerHTML = puchelment(numberofstat);
 
-    document.getElementById("allelment").appendChild(lielment);
+    var list = document.getElementById("allelment");
+
+
+    list.insertBefore(lielment, list.childNodes[0]);
+    var elem = document.getElementById(stackallelement.length);
+    elem.style.right = 500 + "px";
+    myMovepush();
     console.log(stackallelement.length);
 
 }
 
 function pop() {
+
     let elem = document.getElementById(stackallelement.length);
     let whatisindex = numberofstat;
     elem.parentNode.removeChild(elem);
     stackallelement.pop(stackallelement.length)
     numberofstat--;
+    document.getElementById("pop").disabled = false;
     return whatisindex;
+
 }
 
 function removeDummy() {
@@ -70,4 +80,50 @@ function showsize() {
 function peekstack() {
 
     alert(`the top  of  stack is ${document.getElementById(stackallelement.length).innerText}`);
+}
+
+function myMovepop() {
+    document.getElementById("pop").disabled = true;
+
+    var elem = document.getElementById(stackallelement.length);
+    var pos = 0;
+    var id = setInterval(frame, 1);
+
+    function frame() {
+
+        if (pos == 500) {
+            pop();
+            clearInterval(id);
+
+            return 0;
+        } else {
+            pos++;
+            elem.style.right = pos + "px";
+        }
+    }
+
+
+    return 0;
+}
+
+function myMovepush() {
+
+    var elem = document.getElementById(stackallelement.length);
+    var pos = 500;
+    var id = setInterval(frame, 1);
+
+    function frame() {
+
+        if (pos == 0) {
+            clearInterval(id);
+
+            return 0;
+        } else {
+            pos--;
+            elem.style.right = pos + "px";
+        }
+    }
+
+
+    return 0;
 }
