@@ -1,5 +1,4 @@
 function puchelment(numberofstat) {
-
     let element = `<li class = "elmnt" id ="${numberofstat}">elment ${numberofstat}</li>`
     return element;
 }
@@ -8,37 +7,38 @@ let numberofstat = 0;
 let swapreern = 1;
 
 function grratelment() {
+    if (stackallelement.length == 15) {
+        alert("stack is full")
+        return
+    }
     numberofstat++;
     stackallelement.push(numberofstat);
     let lielment = document.createElement("div");
-
     lielment.innerHTML = puchelment(numberofstat);
-
     var list = document.getElementById("allelment");
-
-
     list.insertBefore(lielment, list.childNodes[0]);
     var elem = document.getElementById(stackallelement.length);
     elem.style.right = 500 + "px";
     myMovepush();
     console.log(stackallelement.length);
-
 }
 
 function pop() {
-
     let elem = document.getElementById(stackallelement.length);
     let whatisindex = numberofstat;
     elem.parentNode.removeChild(elem);
     stackallelement.pop(stackallelement.length)
     numberofstat--;
     document.getElementById("pop").disabled = false;
+    document.getElementById("push").disabled = false;
     return whatisindex;
-
 }
 
 function removeDummy() {
-
+    if (stackallelement.length == 0) {
+        alert("stack is empty")
+        return
+    }
     for (let index = 1; index <= stackallelement.length; index++) {
         var elem = document.getElementById(index);
         elem.parentNode.removeChild(elem);
@@ -48,6 +48,10 @@ function removeDummy() {
 }
 
 function swap() {
+    if (stackallelement.length == 0) {
+        alert("stack is empty")
+        return
+    }
     let elmtone = document.getElementById(stackallelement.length).innerHTML
     let elmttwo = document.getElementById(stackallelement.length - 1).innerHTML
     document.getElementById(stackallelement.length - 1).innerHTML = elmtone;
@@ -56,7 +60,6 @@ function swap() {
 }
 
 function isempty() {
-
     if (stackallelement.length == 0) {
         return 1;
     } else
@@ -78,19 +81,25 @@ function showsize() {
 }
 
 function peekstack() {
-
+    if (stackallelement.length == 0) {
+        alert("stack is empty")
+        return
+    }
     alert(`the top  of  stack is ${document.getElementById(stackallelement.length).innerText}`);
 }
 
 function myMovepop() {
+    if (stackallelement.length == 0) {
+        alert("stack is empty")
+        return
+    }
     document.getElementById("pop").disabled = true;
-
+    document.getElementById("push").disabled = true;
     var elem = document.getElementById(stackallelement.length);
     var pos = 0;
     var id = setInterval(frame, 1);
 
     function frame() {
-
         if (pos == 500) {
             pop();
             clearInterval(id);
@@ -101,13 +110,10 @@ function myMovepop() {
             elem.style.right = pos + "px";
         }
     }
-
-
     return 0;
 }
 
 function myMovepush() {
-
     var elem = document.getElementById(stackallelement.length);
     var pos = 500;
     var id = setInterval(frame, 1);
@@ -123,7 +129,6 @@ function myMovepush() {
             elem.style.right = pos + "px";
         }
     }
-
-
+    ispushfinshed = true;
     return 0;
 }
